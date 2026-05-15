@@ -1,0 +1,33 @@
+﻿<Window x:Class="AppTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <!-- Nabindujte Text na vlastnosť Name -->
+            
+            <TextBlock Text="{Binding Name, StringFormat='Hrdina : {}'}" 
+                   FontSize="22" Foreground="Gold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Label Content="Upraviť meno:" Foreground="White"/>
+            <!--Pridajte binding a UpdateSourceTrigger -->
+            <TextBox Margin="0,5,0,15" Text="{Binding Name, UpdateSourceTrigger=Propertychanged}"/>
+
+            <Separator Background="#444" Margin="0,10"/>
+
+            <!-- SLIDER PRE HEALTH A PROGRESSBAR -->
+            <Label Content="health:" Margin="0,10,0,0"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Health, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+            <!-- SLIDER A TEXTBOX PRE STRENGTH (SYNCHRONIZOVANE) -->
+            <Label Content="strength:" Margin="0,10,0,0"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding Strength, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+            <Button Name="btnReset" Content="RESET STATS" Margin="0,20,0,0" Height="30" Cursor="Hand" Click="btnReset_Click" Background="red" BorderBrush="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>
